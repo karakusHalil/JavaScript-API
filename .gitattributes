@@ -1,0 +1,8 @@
+# HTML dosyaları
+*.html linguist-language=HTML
+
+# CSS dosyaları
+*.css linguist-language=CSS
+
+# JavaScript dosyaları
+*.js linguist-language=JavaScript
