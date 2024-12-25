@@ -110,10 +110,38 @@ fetch(apiUrl+"skills")
 })
 .catch(err => console.log(err));
 
+const interestElement = document.querySelector("#interest-list");
 
+fetch(apiUrl+"interest")
+.then(response => response.json())
+.then(data => {
+    interestElement.innerHTML = `
+    <h2 class="mb-5">Interests</h2>`;
+    data.forEach(item => {
+        interestElement.innerHTML += `
+             <p>${item}</p>
+        `
+    })
+})
+.catch(err => console.log(err));
 
-/*
+const awardElement = document.getElementById("award-header");
+const awardList = document.querySelector("#award-list");
+console.log(awardElement);
 
+fetch(apiUrl+"award")
+.then(response => response.json())
+.then(data => {
+    awardElement.innerHTML = `<h2 class="mb-5">Awards & Certifications</h2>`;
+    data.forEach(item => {
+        awardList.innerHTML += `
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                ${item}
+            </li>
+        `
+    })
+    awardElement.append(awardList);
+})
+.catch(err => console.log(err));
 
-
-*/
