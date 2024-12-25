@@ -21,7 +21,7 @@
         {
             "id":1,
             "platform" : "https://www.linkedin.com/in",
-            "username" : "karakusHalil",
+            "username" : "halil-ibrahim-karakuş-a35716157",
             "icon" : "fab fa-linkedin-in"
         },
         {
@@ -33,13 +33,13 @@
         {
             "id" : 3,
             "platform" : "https://www.facebook.com",
-            "username" : "karakusHalil",
+            "username" : "karakusHalillll",
             "icon" : "fab fa-facebook-f"
         },
         {
             "id" : 4,
             "platform" : "https://www.twitter.com",
-            "username" : "karakusHalil",
+            "username" : "karakusHalillll",
             "icon" : "fab fa-twitter"
         }
     ],
@@ -77,7 +77,7 @@
         {
             "school" : "University of Colorado Boulder",
             "faculty" : "Bachelor of Science",
-            "department" : "Computer Science",
+            "department" : "Computer Science - Web Development Track",
             "GNO" : 3.23,
             "startDate" : "Ağustos 2006",
             "endDate" : "Mayıs 2010"

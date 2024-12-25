@@ -39,15 +39,81 @@ fetch(apiUrl+"social-accounts")
 .catch(err => console.log(err));
 
 
+const experiencesElement = document.querySelector("#experience");
+//console.log(experiencesElement);
+
+fetch(apiUrl+"experiences")
+.then(response => response.json())
+.then(data => {
+    const experincesList = document.querySelector("#experiences-list");
+    experincesList.innerHTML = `<h2 class="mb-5">Experience</h2>`;
+    data.forEach(item => {
+        experincesList.innerHTML += `
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+        <div class="flex-grow-1">
+            <h3 class="mb-0">${item.title}</h3>
+            <div class="subheading mb-3">${item.company}</div>
+            <p>${item.description}</p>
+        </div>
+        <div class="flex-shrink-0"><span class="text-primary">${item.startDate} - ${item.endDate}</span></div>
+            </div>
+        `
+    })
+    experiencesElement.append(experincesList);
+})
+.catch(err => console.log(err));
+
+
+const educationList = document.querySelector("#education-list");
+
+fetch(apiUrl+"educations")
+.then(response => response.json())
+.then(data => {
+    educationList.innerHTML = `<h2 class="mb-5">Education</h2>`;
+    data.forEach(item => {
+        educationList.innerHTML += `
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+    <div class="flex-grow-1">
+        <h3 class="mb-0">${item.school}</h3>
+        <div class="subheading mb-3">${item.faculty}</div>
+        <div>${item.department}</div>
+        <p>GNA: ${item.GNO}</p>
+    </div>
+        <div class="flex-shrink-0"><span class="text-primary">${item.startDate} - ${item.endDate}</span></div>
+            </div>
+        `;
+    })
+    
+})
+.catch(err => console.log(err));
+
+const skillElement = document.querySelector("#skill-list");
+const workflowElement = document.querySelector("#workflow-list");
+
+fetch(apiUrl+"skills")
+.then(response => response.json())
+.then(data => {
+    data.programLanguagesAndTools.forEach(item => {
+        skillElement.innerHTML += `
+            <li class="list-inline-item"><i class="${item.icon}"></i></li>
+        `;
+    });
+    data.workflow.forEach(item =>{
+        workflowElement.innerHTML += `
+            <li>
+                <span class="fa-li"><i class="fas fa-check"></i></span>
+                ${item}
+            </li>
+        `;
+    })
+    
+})
+.catch(err => console.log(err));
+
+
 
 /*
 
-<div class="social-icons">
-    <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-    <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-    <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-    <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-</div>
 
 
 */
