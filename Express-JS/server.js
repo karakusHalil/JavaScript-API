@@ -11,7 +11,7 @@ const port = 8080;
 
 app.use(accessControl);
 app.use(express.json());
-app.use("/api",routers);
+app.use("/api",routers);//http://localhost:8080/api
 
 
 
