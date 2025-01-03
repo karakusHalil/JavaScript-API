@@ -36,14 +36,16 @@ router.get("/",(req,res) => {
 
 router.get("/:id",(req,res) => {
     const id = parseInt(req.params.id);
+    let found = false;
     for(let i = 0; i < categories.length ; i++){
         if(categories[i].id === id){
             res.status(200).json(categories[i]);
-        }else{
-            res.status(401).json({
-               message : "Hatalı İşlem !" 
-            })
         }
+    }
+    if (!found) {
+        res.status(404).json({
+            message: "Hatalı İşlem! Böyle bir müşteri bulunamadı.",
+        });
     }
 })
 
