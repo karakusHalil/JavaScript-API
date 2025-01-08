@@ -44,6 +44,19 @@ router.get("/",(req,res) => {
     res.json(products);
 });
 
+router.get("/:id",(req,res) => {
+    const id = parseInt(req.params.id);
+    for(let i = 0; i < products.length ; i++){
+        if(products[i].id === id){
+            res.status(200).json(products[i]);
+            return;
+        }  
+    }
+    res.status(401).json({
+        message: "Hatalı işlem! Ürün bulunamadı."
+    });
+})
+
 router.post("/",(req,res) => {
    const id = products[products.length-1].id+1;
    products.push({id:id,...req.body});
