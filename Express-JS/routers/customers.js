@@ -58,6 +58,7 @@ const customers = [
         for(let i = 0; i < customers.length ; i++){
             if(customers[i].id === id){
                 res.status(200).json(customers[i]);
+                found = true;
                 break;
             }
         }
