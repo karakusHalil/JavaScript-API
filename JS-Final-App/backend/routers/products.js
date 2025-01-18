@@ -39,7 +39,20 @@ router.get("/",async(req,res) => {
     }
 })
 
+//GETBYID PRODUCTS
 
+router.get("/:productId",async(req,res) => {
+    try {
+        const productId = req.params.productId;
+        const product = await Product.findById(productId);
+        if(!product){
+            return res.status(404).json({error: "Ürün bulunamadı..."});
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({error : "Sunucu hatası..."});
+    }
+})
 
 
 module.exports = router;
