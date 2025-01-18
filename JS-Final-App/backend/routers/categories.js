@@ -16,7 +16,7 @@ router.post("/", async (req,res) => {
     }
 })
 
-//GET METHODU
+//GET CATEGORY
 
 router.get("/",async(req,res) => {
     try {
@@ -27,5 +27,25 @@ router.get("/",async(req,res) => {
     }
 })
 
+//GETBYID CATEGORY
+
+
+
+//UPDATE CATEGORY
+
+router.put("/:categoryId",async(req,res) => {
+    try {
+        const categoryId = req.params.categoryId;
+        const updatedInfo = req.body;
+        const updatedCategory = await Category.findById(categoryId);
+        if(!updatedCategory){
+            res.status(404).json({error: "Kategori bulunamadı..."});
+        }
+        const resultCategory = await Category.findByIdAndUpdate(categoryId,updatedInfo,{ new: true, runValidators: true });
+        res.status(200).json(resultCategory);
+    } catch (error) {
+        res.status(500).json({error : "Sunucu hatası..."});
+    }
+})
 
 module.exports = router;
