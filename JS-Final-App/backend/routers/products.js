@@ -54,5 +54,22 @@ router.get("/:productId",async(req,res) => {
     }
 })
 
+//UPDATE PRODUCT
+
+router.put("/",async(req,res)=>{
+    try {
+        const updatedProduct = req.body;
+        const product = await Product.findById(updatedProduct._id);
+        if(!product){
+            return res.status(404).json({error : "Ürün bulunamadı..."});
+        }
+        
+        const newProduct = await Product.findByIdAndUpdate(updatedProduct._id,updatedProduct, { new: true, runValidators: true });
+        res.status(200).json(newProduct);
+    } catch (error) {
+        res.status(500).json({error: "Sunucu hatası..."});
+    }
+})
+
 
 module.exports = router;
